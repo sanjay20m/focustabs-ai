@@ -183,3 +183,16 @@ async function refresh() {
 }
 
 document.addEventListener('DOMContentLoaded', init);
+document.getElementById("askAIButton").addEventListener("click", async () => {
+  const input = document.getElementById("promptInput");
+  const output = document.getElementById("output");
+  
+  if (!input.value.trim()) {
+    output.textContent = "Please enter something to ask.";
+    return;
+  }
+
+  output.textContent = "Thinking... 🤔";
+  const reply = await getAIResponse(input.value);
+  output.textContent = reply;
+});
