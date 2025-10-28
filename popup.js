@@ -196,3 +196,51 @@ document.getElementById("askAIButton").addEventListener("click", async () => {
   const reply = await getAIResponse(input.value);
   output.textContent = reply;
 });
+document.addEventListener("DOMContentLoaded", async () => {
+  // Fetch current tabs
+  const tabs = await chrome.tabs.query({});
+  const total = tabs.length;
+
+  // Identify most used domains
+  const domains = {};
+  tabs.forEach(t => {
+    try {
+      const u = new URL(t.url);
+      domains[u.hostname] = (domains[u.hostname] || 0) + 1;
+    } catch {}
+  });
+  const topDomains = Object.entries(domains)
+    .sort((a,b)=>b[1]-a[1])
+    .slice(0,3)
+    .map(([d,c])=>`${d} (${c})`)
+    .join(", ");
+
+  // Track active tab time
+  const startTime = Date.now();
+  setInterval(() => {
+    const elapsed = Math.floor((Date.now() - startTime) / 1000);
+    const mins = Math.floor(elapsed / 60);
+    const secs = elapsed % 60;
+    const focusScore = Math.max(20, 100 - total * 4);
+    document.getElementById("focusStats").innerHTML = `
+      <b>Total Tabs:</b> ${total}<br>
+      <b>Top Domains:</b> ${topDomains}<br>
+      <b>Active Time:</b> ${mins}m ${secs}s<br>
+      <b>Focus Score:</b> ${focusScore}/100
+    `;
+  }, 1000);
+
+  // Generate AI suggestion
+  generateAutoSuggestion(total, topDomains);
+});
+
+async function generateAutoSuggestion(total, topDomains) {
+  const prompt = `You are a digital wellbeing assistant. Based on this context:
+  The user has ${total} open tabs. Top domains: ${topDomains}.
+  Give one short friendly suggestion (max 2 sentences) to help them focus or improve productivity.`;
+
+  document.getElementById("autoSuggestion").textContent = "Thinking with Gemini… 🤖";
+
+  const suggestion = await getAIResponse(prompt);
+  document.getElementById("autoSuggestion").textContent = suggestion;
+}
