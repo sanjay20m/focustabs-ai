@@ -1,6 +1,6 @@
 // ai.js
 async function getAIResponse(prompt) {
-  const API_KEY = "AIzaSyCaDEvRiycmeMqCbHSy03TEAyxQlt6XvnY"; // Replace this with your Google AI API key
+  const API_KEY = "API KEY"; // Replace this with your Google AI API key
   const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" + API_KEY;
 
   const response = await fetch(url, {
