@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FocusTabs AI</title>
+  <script src="popup.js" defer></script>
+  <link href="popup.css" rel="stylesheet" />
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 w-80 p-3 font-sans">
+  
+  <!-- Header -->
+  <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl text-white p-4 shadow-lg mb-4">
+    <h1 class="text-lg font-bold">FocusTabs AI</h1>
+    <p class="text-xs opacity-90">Smarter Tabs. Better Focus.</p>
+  </div>
+
+  <!-- Search -->
+  <div class="mb-3">
+    <input 
+      type="text" 
+      id="searchInput" 
+      placeholder="🔍 Search tabs..." 
+      class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+    />
+  </div>
+
+  <!-- Focus Score -->
+  <div class="bg-white rounded-xl shadow p-3 mb-3 flex justify-between items-center">
+    <div>
+      <p class="text-sm font-semibold">Focus Score</p>
+      <p id="focusScore" class="text-xl font-bold text-blue-600">72/100</p>
+    </div>
+    <button 
+      id="focusBtn" 
+      class="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm shadow hover:bg-blue-700">
+      Enable Focus Mode
+    </button>
+  </div>
+
+  <!-- Tab List -->
+  <div id="tabList" class="space-y-2 max-h-64 overflow-y-auto">
+    <!-- Tabs will be injected by popup.js -->
+  </div>
+
+  <!-- Wellbeing -->
+  <div class="bg-gradient-to-r from-green-400 to-emerald-500 text-white rounded-xl shadow p-3 mt-4">
+    <p class="text-sm">🌿 Tip: You've been browsing for 1h 20m — take a 5 min break!</p>
+  </div>
+
+</body>
+</html>
