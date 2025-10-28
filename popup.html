@@ -1,54 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FocusTabs AI</title>
-  <script src="popup.js" defer></script>
-  <link href="popup.css" rel="stylesheet" />
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FocusTabs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
 </head>
-<body class="bg-gray-100 w-80 p-3 font-sans">
-  
-  <!-- Header -->
-  <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl text-white p-4 shadow-lg mb-4">
-    <h1 class="text-lg font-bold">FocusTabs AI</h1>
-    <p class="text-xs opacity-90">Smarter Tabs. Better Focus.</p>
-  </div>
+<body>
+  <div class="popup">
+    <header class="header">
+      <div class="brand">
+        <svg class="logo" width="28" height="28" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="3" y="3" width="18" height="18" rx="4" fill="#2B6CB0"></rect>
+          <path d="M7 12h10" stroke="white" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M7 8h10" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.75"/>
+        </svg>
+        <div class="title">FocusTabs</div>
+      </div>
 
-  <!-- Search -->
-  <div class="mb-3">
-    <input 
-      type="text" 
-      id="searchInput" 
-      placeholder="🔍 Search tabs..." 
-      class="w-full p-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
-    />
-  </div>
+      <div class="header-actions">
+        <button id="focusBtn" class="btn primary" title="Focus on selected tabs">Focus</button>
+      </div>
+    </header>
 
-  <!-- Focus Score -->
-  <div class="bg-white rounded-xl shadow p-3 mb-3 flex justify-between items-center">
-    <div>
-      <p class="text-sm font-semibold">Focus Score</p>
-      <p id="focusScore" class="text-xl font-bold text-blue-600">72/100</p>
+    <div class="controls">
+      <input id="search" class="search" type="search" placeholder="Search tabs..." aria-label="Search tabs">
     </div>
-    <button 
-      id="focusBtn" 
-      class="bg-blue-600 text-white px-3 py-1 rounded-lg text-sm shadow hover:bg-blue-700">
-      Enable Focus Mode
-    </button>
+
+    <main id="list" class="list" role="list" aria-live="polite">
+      <div class="empty">Loading open tabs…</div>
+    </main>
+
+    <footer class="footer">
+      <button id="closeAllBtn" class="btn ghost">Close Selected</button>
+      <button id="optionsBtn" class="btn ghost">Options</button>
+    </footer>
   </div>
 
-  <!-- Tab List -->
-  <div id="tabList" class="space-y-2 max-h-64 overflow-y-auto">
-    <!-- Tabs will be injected by popup.js -->
-  </div>
-
-  <!-- Wellbeing -->
-  <div class="bg-gradient-to-r from-green-400 to-emerald-500 text-white rounded-xl shadow p-3 mt-4">
-    <p class="text-sm">🌿 Tip: You've been browsing for 1h 20m — take a 5 min break!</p>
-  </div>
-
+  <script src="popup.js"></script>
 </body>
 </html>
