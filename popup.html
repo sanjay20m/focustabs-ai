@@ -61,13 +61,27 @@
     <main id="list" class="list" role="list" aria-live="polite">
       <div class="empty">Loading open tabs…</div>
     </main>
-
+<section class="ai-section">
+  <h3 style="font-size:14px;font-weight:600;margin-bottom:6px;color:#9aa4b2;">AI Assistant 🤖</h3>
+  <div style="display:flex;gap:8px;">
+    <input type="text" id="promptInput" placeholder="Ask me anything..." 
+           style="flex:1;padding:8px;border-radius:8px;border:1px solid #1e293b;
+                  background:#0b1624;color:#e6eef6;font-family:inherit;">
+    <button id="askAIButton" 
+            style="background:#2563eb;border:none;color:white;border-radius:8px;
+                   padding:8px 12px;cursor:pointer;font-weight:600;">Ask</button>
+  </div>
+  <div id="output" 
+       style="margin-top:8px;padding:8px;background:#0b1624;border-radius:8px;
+              min-height:40px;font-size:13px;color:#cbd5e1;">AI response will appear here.</div>
+</section>
     <footer class="footer">
       <button id="closeAllBtn" class="btn ghost">Close Selected</button>
       <button id="optionsBtn" class="btn ghost">Options</button>
     </footer>
   </div>
 
-  <script src="popup.js"></script>
+<script src="ai.js"></script>
+<script src="popup.js"></script>
 </body>
 </html>
